@@ -1,5 +1,5 @@
 node('movies-loader'){
     stage('Checkout'){
-        checkout scm
+        echo "checking out codes on GitHub"
     }
 }
