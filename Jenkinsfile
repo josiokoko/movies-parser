@@ -8,7 +8,7 @@ pipeline {
       stages {
         stage("Checkout"){
             steps{
-                sh 'echo checkout complete!'
+                checkout scm
             }
         }
         stage("Quality Tests"){
