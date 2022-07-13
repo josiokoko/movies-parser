@@ -3,7 +3,7 @@ profile {
  
       environment {
             DOCKERHUB_CREDENTIALS=credentials('docker-josiokoko')
-            imageName = 'josiokoko/movies-loader'
+            imageName = 'josiokoko/movies-parser'
       }
       stages{
         stage("Checkout"){
