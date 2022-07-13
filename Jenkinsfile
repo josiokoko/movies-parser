@@ -1,7 +1,6 @@
 pipeline {
     agent any
- 
-      environment {
+    environment {
             DOCKERHUB_CREDENTIALS=credentials('docker-josiokoko')
             imageName = 'josiokoko/movies-parser'
       }
@@ -13,7 +12,7 @@ pipeline {
         }
         stage("Quality Tests"){
             steps {
-                script {
+                script{
                     def imageTest= docker.build("${imageName}-test", "-f Dockerfile.test ."
                     imageTest.inside{
                         sh 'golint'
