@@ -1,5 +1,25 @@
-node('movies'){
-    stage('Checkout'){
-        echo "checking out codes on GitHub"
-    }
+profile {
+    agent any
+ 
+      environment {
+            DOCKERHUB_CREDENTIALS=credentials('docker-josiokoko')
+            imageName = 'josiokoko/movies-loader'
+      }
+      stages{
+        stage("Checkout"){
+            steps{
+                checkout sm
+            }
+        }
+        stage("Quality Tests"){
+            steps{
+                script{
+                    def imageTest= docker.build("${imageName}-test", "-f Dockerfile.test
+                    imageTest.inside{
+                        sh 'golint'
+                    }
+                }
+            }
+        }
+      }
 }
