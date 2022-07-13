@@ -8,7 +8,7 @@ profile {
       stages{
         stage("Checkout"){
             steps{
-                checkout sm
+                checkout scm
             }
         }
         stage("Quality Tests"){
