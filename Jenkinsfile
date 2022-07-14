@@ -1,3 +1,5 @@
+def imageTest= docker.build("${imageName}-test", "-f Dockerfile.test .")
+
 pipeline {
     agent any
     environment {
@@ -6,7 +8,7 @@ pipeline {
       }
       
       stages {
-        def imageTest= docker.build("${imageName}-test", "-f Dockerfile.test .")
+        
         stage("Checkout"){
             steps{
                 checkout scm
