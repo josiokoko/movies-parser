@@ -4,8 +4,9 @@ pipeline {
             DOCKERHUB_CREDENTIALS=credentials('docker-josiokoko')
             imageName = 'josiokoko/movies-parser'
       }
-      def imageTest= docker.build("${imageName}-test", "-f Dockerfile.test .")
+      
       stages {
+        def imageTest= docker.build("${imageName}-test", "-f Dockerfile.test .")
         stage("Checkout"){
             steps{
                 checkout scm
