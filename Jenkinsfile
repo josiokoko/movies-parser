@@ -17,6 +17,7 @@ pipeline {
                 script{
                     def imageTest= docker.build("${imageName}-test", "-f Dockerfile.test .")
                     imageTest.inside{
+                        sh 'go mod download github.com/PuerkitoBio/goquery'
                         sh 'golint'
                     }
                 }
