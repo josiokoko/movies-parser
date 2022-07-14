@@ -28,6 +28,7 @@ pipeline {
                 script{
                     def imageTest2= docker.build("${imageName}-test", "-f Dockerfile.test .")
                     imageTest2.inside{
+                        sh 'go mod tidy'
                         sh 'go test'
                     }
                 }
