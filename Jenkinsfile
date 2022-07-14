@@ -3,8 +3,8 @@ pipeline {
     environment {
             DOCKERHUB_CREDENTIALS=credentials('docker-josiokoko')
             imageName = 'josiokoko/movies-parser'
-            def imageTest= docker.build("${imageName}-test", "-f Dockerfile.test .")
       }
+      def imageTest= docker.build("${imageName}-test", "-f Dockerfile.test .")
       stages {
         stage("Checkout"){
             steps{
