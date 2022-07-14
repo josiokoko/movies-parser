@@ -5,6 +5,7 @@ ENV GOCACHE /tmp
 WORKDIR /go/src/github/josiokoko/movies-parser
 
 RUN go get -u golang.org/x/lint/golint
+RUN go mod tidy
 
 COPY . .
 
