@@ -1,10 +1,9 @@
-def imageTest= docker.build("${imageName}-test", "-f Dockerfile.test .")
-
 pipeline {
     agent any
     environment {
             DOCKERHUB_CREDENTIALS=credentials('docker-josiokoko')
             imageName = 'josiokoko/movies-parser'
+            imageTest= docker.build("${imageName}-test", "-f Dockerfile.test .")
       }
       
       stages {
