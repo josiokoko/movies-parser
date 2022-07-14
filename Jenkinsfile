@@ -26,8 +26,10 @@ pipeline {
         stage("Unit Tests"){
             steps {
                 script{
-                    docker.build("${imageName}-test", "-f Dockerfile.test .")
-                    sh "go test"
+                    def imageTest2= docker.build("${imageName}-test", "-f Dockerfile.test .")
+                    imageTest2.inside{
+                        sh 'go test'
+                    }
                 }
             }
         }
