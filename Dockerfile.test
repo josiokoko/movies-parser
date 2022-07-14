@@ -1,11 +1,12 @@
-FROM golang:1.15
+FROM golang:1.16.5
 
 ENV VERSION v1.0.22
 ENV GOCACHE /tmp
-WORKDIR /go/src/github/josiokoko/movies-parser
+WORKDIR /go/src/github.com/josiokoko/movies-parser
 
 RUN go get -u golang.org/x/lint/golint
 
 COPY . .
+COPY main.go go.mod ./
 
 RUN go get -v 
