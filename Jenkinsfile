@@ -22,5 +22,14 @@ pipeline {
                 }
             }
         }
-      }
+        
+        stage("Unit Tests"){
+            steps {
+                imageTest.inside{
+                    sh 'go test'
+                }
+            }
+        }
+        
+   }
 }
