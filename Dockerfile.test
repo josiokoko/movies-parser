@@ -1,4 +1,4 @@
-FROM golang:1.13.4
+FROM golang:1.16-alpine
 
 ENV VERSION v1.0.22
 ENV GOCACHE /tmp
