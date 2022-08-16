@@ -1,5 +1,6 @@
 pipeline {
     agent any
+    tools { go '1.19' }
     environment {
             DOCKERHUB_CREDENTIALS=credentials('DockerHub-josiokoko')
             imageName = 'josiokoko/movies-parser'
