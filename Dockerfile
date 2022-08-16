@@ -1,4 +1,4 @@
-FROM golang:1.13.4
+FROM golang:alpine //golang:1.13.4
 WORKDIR /go/src/github.com/josiokoko/movies-parser
 COPY main.go go.mod ./
 RUN apt -y update
