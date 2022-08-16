@@ -1,4 +1,4 @@
-FROM golang:1.16.5
+FROM golang:1.13.4
 WORKDIR /go/src/github.com/josiokoko/movies-parser
 COPY main.go go.mod ./
 RUN yum -y update
