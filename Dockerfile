@@ -1,8 +1,7 @@
-FROM golang
+FROM golang:1.16.5
 WORKDIR /go/src/github.com/josiokoko/movies-parser
-COPY main.go go.mod ./
+COPY main.go go.mod .
 RUN go get -v
-RUN go mod tidy
 RUN CGO_ENABLED=0 GOOS=linux go build -a -installsuffix cgo -o app main.go
 
 FROM alpine:latest  
