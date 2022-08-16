@@ -1,7 +1,7 @@
 FROM golang:1.13.4
 WORKDIR /go/src/github.com/josiokoko/movies-parser
 COPY main.go go.mod ./
-RUN yum -y update
+RUN apt -y update
 RUN go get -v
 RUN CGO_ENABLED=0 GOOS=linux go build -a -installsuffix cgo -o app main.go
 
