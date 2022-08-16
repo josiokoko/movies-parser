@@ -8,5 +8,5 @@ RUN go get -u golang.org/x/lint/golint
 
 COPY . .
 COPY main.go go.mod ./
-
+RUN go mod tidy
 RUN go get -v 
