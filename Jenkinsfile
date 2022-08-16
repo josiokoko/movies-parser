@@ -13,13 +13,22 @@ pipeline {
                 checkout scm
             }
         }
-        stage("Quality Tests"){
+          
+        stage("Quality Test"){
             steps {
                 script{
                     def imageTest= docker.build("${imageName}-test", "-f Dockerfile.test .")
                     imageTest.inside{
                         sh 'golint'
                     }
+                }
+            }
+        }
+          
+          
+         stage("Unit Test 1"){
+            steps {
+                    sh 'go test'
                 }
             }
         }
