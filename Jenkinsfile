@@ -26,11 +26,10 @@ pipeline {
         }
           
           
-         stage("Unit Test 1"){
+        stage("Unit Test 1"){
             steps {
-                    sh 'go test'
-                }
-            }
+                sh 'go test'
+              }
         }
         
         stage("Unit Tests"){
