@@ -13,24 +13,35 @@ pipeline {
                 checkout scm
             }
         }
-          
-        stage("Quality Test"){
-            steps {
-                script{
-                    def imageTest= docker.build("${imageName}-test", "-f Dockerfile.test .")
-                    imageTest.inside{
-                        sh 'golint'
+        
+          stage("Pre-integration Testing"){
+              parallel {
+                  
+                    stage("Quality Test"){
+                        steps {
+                            script{
+                                def imageTest= docker.build("${imageName}-test", "-f Dockerfile.test .")
+                                imageTest.inside{
+                                    sh 'golint'
+                                }
+                            }
+                        }
                     }
-                }
-            }
-        }
-           
-       stage("Unit Tests"){
-          steps {
-                echo "Unit Testing..."
-            }
-        }
 
-   
+                   stage("Unit Tests"){
+                      steps {
+                            echo "Unit Testing..."
+                        }
+                    }
+                  
+                   stage("Security Tests"){
+                      steps {
+                            echo "Security Testing..."
+                        }
+                    }
+                  
+                }  
+            }
+          
    }
 }
