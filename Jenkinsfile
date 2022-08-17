@@ -30,18 +30,7 @@ pipeline {
                 echo "Unit Testing..."
             }
         }
-          
-         
-          stage("Security Testing"){
-              steps{
-                  script{
-                  
-                        sh 'nancy /go/src/github/mlabouardy/movies-parser/Gopkg.lock'
-                     
-                  }
-              }
-          }  
-          
-        
+
+   
    }
 }
