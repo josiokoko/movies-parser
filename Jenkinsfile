@@ -4,7 +4,6 @@ pipeline {
     environment {
             DOCKERHUB_CREDENTIALS=credentials('DockerHub-josiokoko')
             imageName = 'josiokoko/movies-parser'
-            imageTest= docker.build("${imageName}-test", "-f Dockerfile.test .")
       }
       
       stages {
@@ -18,7 +17,7 @@ pipeline {
         stage("Quality Test"){
             steps {
                 script{
-                    // def imageTest= docker.build("${imageName}-test", "-f Dockerfile.test .")
+                    def imageTest= docker.build("${imageName}-test", "-f Dockerfile.test .")
                     imageTest.inside{
                         sh 'golint'
                     }
@@ -36,9 +35,9 @@ pipeline {
           stage("Security Testing"){
               steps{
                   script{
-                      imageTest.inside{
+                  
                         sh 'nancy /go/src/github/mlabouardy/movies-parser/Gopkg.lock'
-                      }
+                     
                   }
               }
           }  
